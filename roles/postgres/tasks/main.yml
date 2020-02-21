@@ -1,0 +1,22 @@
+- name: install postgres packages
+  yum:
+      name: "{{ packages }}"
+      state: present
+  vars:
+      packages:
+      - postgresql
+      - postgresql-server
+      - postgresql-devel
+      - postgresql-contrib
+      - postgresql-docs
+
+- name: check if postgres db initialized
+  stat:
+      path: "/var/lib/pgsql/data/PG_VERSION"
+  register: pgversion
+  become: true
+
+- name: ensure postgres set up on server
+  command: "/bin/postgresql-setup initdb"
+  when: not pgversion.stat.exists
+  become: true

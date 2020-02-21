@@ -1,0 +1,11 @@
+---
+- name: create notes user
+  user:
+      name: notes
+
+- name: add notes user to postgres db notes owner
+  postgresql_db:
+      name: notes
+      owner: notes
+  vars:
+      ansible_python_interpreter: /usr/bin/python3

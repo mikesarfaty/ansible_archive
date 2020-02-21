@@ -1,0 +1,8 @@
+---
+dependencies:
+    - role: postgres
+    - role: python
+    - role: python
+      vars:
+          packages: 
+            - psycopg2-binary

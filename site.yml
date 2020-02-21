@@ -1,0 +1,5 @@
+---
+- name: notes.mikesarfaty.com
+  hosts: site
+  roles:
+      - deploy_notes
